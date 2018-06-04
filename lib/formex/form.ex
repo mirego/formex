@@ -93,7 +93,7 @@ defmodule Formex.Form do
   @spec get_subforms(form :: t) :: list
   def get_subforms(form) do
     form.items
-    |> Enum.filter(&(&1.__struct__ == FormNested || &1.__struct__ == FormCollection))
+    |> Enum.filter(&(&1.__struct__ in [FormNested, FormCollection]))
   end
 
   @doc """
@@ -111,6 +111,7 @@ defmodule Formex.Form do
   @spec find_by_struct_name(form :: t, name :: atom) :: list
   def find_by_struct_name(form, name) do
     form.items
+    |> Enum.filter(&(&1.__struct__ in [Field, FormNested, FormCollection]))
     |> Enum.find(&(&1.struct_name == name))
   end
 
@@ -120,7 +121,7 @@ defmodule Formex.Form do
   @spec get_struct_name_by_name(form :: t, name :: atom) :: atom
   def get_struct_name_by_name(form, name) do
     form
-    |> find(name)
+    |> find_by_struct_name(name)
     |> Map.get(:struct_name)
   end
 
@@ -129,8 +130,8 @@ defmodule Formex.Form do
   """
   @spec get_name_by_struct_name(form :: t, struct_name :: atom) :: atom
   def get_name_by_struct_name(form, struct_name) do
-    form.items
-    |> Enum.find(&(&1.struct_name == struct_name))
+    form
+    |> find_by_struct_name(struct_name)
     |> Map.get(:name)
   end
 
