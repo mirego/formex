@@ -106,7 +106,6 @@ defmodule Formex.Type do
       <% end %>
       ```
 
-
   ## Collections of forms
 
   ### Installation
