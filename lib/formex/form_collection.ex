@@ -101,7 +101,9 @@ defmodule Formex.FormCollection do
     substructs
     |> Enum.map(fn substruct ->
       {_, subparams} =
-        Enum.find(params, {nil, %{}}, fn {_k, v} ->
+        params
+        |> Enum.filter(fn {_key, val} -> val["id"] end)
+        |> Enum.find({nil, %{}}, fn {k, v} ->
           id =
             if is_integer(substruct.id) do
               v["id"] |> Integer.parse() |> elem(0)
