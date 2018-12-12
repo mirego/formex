@@ -360,7 +360,7 @@ defmodule Formex.View.Collection do
     {:safe, html}
   end
 
-  @indexes_regex ~r/(for|id|name|href|aria-controls)(\=")(.*?)(")/i
+  @indexes_regex ~r/(for|id|name|href|aria-controls|data-target)(\=")(.*?)(")/i
   defp replace_indexes_in_prototype(html) do
     Regex.replace(@indexes_regex, html, fn _match, a, b, name, c ->
       replaced_name =
