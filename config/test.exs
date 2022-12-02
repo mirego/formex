@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :formex, ecto_repos: [Formex.TestRepo]
 

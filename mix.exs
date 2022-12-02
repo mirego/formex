@@ -5,7 +5,7 @@ defmodule Formex.Mixfile do
     [
       app: :formex,
       version: "0.6.7",
-      elixir: "~> 1.3",
+      elixir: "~> 1.13",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -27,10 +27,10 @@ defmodule Formex.Mixfile do
 
   defp deps do
     [
-      {:phoenix_html, "~> 2.0"},
+      {:phoenix_html, "~> 3.0"},
       {:ex_doc, ">= 0.0.0", only: :dev},
-      {:phoenix, "~> 1.3", only: [:dev, :test]},
-      {:credo, "~> 0.9", only: [:dev, :test], runtime: false}
+      {:phoenix, "~> 1.6", only: [:dev, :test]},
+      {:credo, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
   end
 
