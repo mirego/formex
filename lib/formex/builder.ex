@@ -46,8 +46,7 @@ defmodule Formex.Builder do
     wrapper
     |> struct(form: form)
     |> BuilderProtocol.create_struct_info()
-    # here is called build_form callback and Form.finish_creating
-    |> BuilderProtocol.create_form()
+    |> BuilderProtocol.create_form() # here is called build_form callback and Form.finish_creating
     |> Map.get(:form)
     |> map_params()
     |> apply_params()
