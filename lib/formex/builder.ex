@@ -45,7 +45,8 @@ defmodule Formex.Builder do
     wrapper
     |> struct(form: form)
     |> BuilderProtocol.create_struct_info()
-    |> BuilderProtocol.create_form() # here is called build_form callback and Form.finish_creating
+    # here is called build_form callback and Form.finish_creating
+    |> BuilderProtocol.create_form()
     |> Map.get(:form)
     |> map_params()
     |> apply_params()
@@ -122,11 +123,11 @@ defmodule Formex.Builder do
         to_remove = Form.get_items_with_changed_name(form)
 
         params
-          |> Map.merge(new_params)
-          |> Enum.filter(fn {key, _value} ->
-            String.to_atom(key) not in to_remove
-          end)
-          |> Map.new()
+        |> Map.merge(new_params)
+        |> Enum.filter(fn {key, _value} ->
+          String.to_atom(key) not in to_remove
+        end)
+        |> Map.new()
       end)
 
     Map.put(form, :mapped_params, new_params)
