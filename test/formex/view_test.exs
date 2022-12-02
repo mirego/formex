@@ -66,7 +66,7 @@ defmodule Formex.ViewTest do
     assert String.match?(form_html, ~r/Submit form/)
     assert String.match?(form_html, ~r/btn-success/)
 
-    tags_ordered = Enum.map(tags, & &1.name) |> Enum.join(".+")
+    tags_ordered = Enum.map_join(tags, ".+", & &1.name)
     tags_ordered_regex = ~r/#{tags_ordered}/
     assert String.match?(form_html, tags_ordered_regex)
 

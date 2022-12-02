@@ -16,7 +16,6 @@ defmodule Formex.Builder do
   alias Formex.BuilderProtocol
   alias Formex.FormCollection
   alias Formex.FormNested
-  alias Formex.Field
   alias Formex.Field.Select
   alias Formex.Validator
 
@@ -122,10 +121,9 @@ defmodule Formex.Builder do
 
         to_remove = Form.get_items_with_changed_name(form)
 
-        new_params =
-          params
+        params
           |> Map.merge(new_params)
-          |> Enum.filter(fn {key, value} ->
+          |> Enum.filter(fn {key, _value} ->
             String.to_atom(key) not in to_remove
           end)
           |> Map.new()
