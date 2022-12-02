@@ -36,7 +36,15 @@ defmodule Formex.Field do
   Creates a new field.
 
   `type` is the name of function from
-  [`Phoenix.HTML.Form`](https://hexdocs.pm/phoenix_html/Phoenix.HTML.Form.html).
+  [`Phoenix.HTML.Form`](https://hexdocs.pm/phoenix_html/Phoenix.HTML.Form.html). For example,
+  if you need to render a password field, then use
+  [`Phoenix.HTML.Form.password_input/3`](https://hexdocs.pm/phoenix_html/Phoenix.HTML.Form.html#password_input/3)
+  in that way:
+
+  ```
+  form
+  |> add(:pass, :password_input)
+  ```
 
   ## Options
 
@@ -87,7 +95,7 @@ defmodule Formex.Field do
     * `:choice_label_provider` - used along with `:select_without_choices`.
 
       When form is sent but it's displayed again (because of some errors), we have to render
-      <select>` with a single `<option>`, previously chosen by user.
+      `<select>` with a single `<option>`, previously chosen by user.
 
       This option expects a function that receives id and returns some label.
 

@@ -99,6 +99,9 @@ end
 Please note that `required` option is used only to generate an asterisk.
 Any validation must be done via `validation` option.
 
+The `:text_input` and so on are function names from
+[`Phoenix.HTML.Form`](https://hexdocs.pm/phoenix_html/Phoenix.HTML.Form.html)
+
 ### Controller
 
 ```elixir
@@ -171,6 +174,7 @@ The final effect after submit:
 * [Bootstrap Horizontal](https://hexdocs.pm/formex/Formex.Template.BootstrapHorizontal.html)
 
 ### Guides
+* [Add new items to collection on the backend](https://hexdocs.pm/formex/guides.html#add-new-items-to-collection-on-the-backend)
 * [Using a select picker plugin with ajax search](https://hexdocs.pm/formex/guides.html#using-a-select-picker-plugin-with-ajax-search)
 * [Uploading files with Arc.Ecto](https://hexdocs.pm/formex_ecto/guides.html#uploading-files-with-arc-ecto) (Formex.Ecto)
 
