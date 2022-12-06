@@ -2,7 +2,6 @@ defmodule Formex.Field.Select do
   @moduledoc false
 
   alias Formex.Field
-  alias Formex.Field.Select.ValidatorError
 
   @spec handle_select_without_choices(field :: Field.t(), val :: String.t()) :: Field.t()
   def handle_select_without_choices(field, val) do
@@ -32,7 +31,7 @@ defmodule Formex.Field.Select do
 
               {field.opts[:choice_label_provider].(subval), subval}
             end)
-            |> Enum.filter(fn {label, val} -> label end)
+            |> Enum.filter(fn {label, _val} -> label end)
         end
 
       data =

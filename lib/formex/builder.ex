@@ -16,7 +16,6 @@ defmodule Formex.Builder do
   alias Formex.BuilderProtocol
   alias Formex.FormCollection
   alias Formex.FormNested
-  alias Formex.Field
   alias Formex.Field.Select
   alias Formex.Validator
 
@@ -46,7 +45,8 @@ defmodule Formex.Builder do
     wrapper
     |> struct(form: form)
     |> BuilderProtocol.create_struct_info()
-    |> BuilderProtocol.create_form() # here is called build_form callback and Form.finish_creating
+    # here is called build_form callback and Form.finish_creating
+    |> BuilderProtocol.create_form()
     |> Map.get(:form)
     |> map_params()
     |> apply_params()
@@ -122,13 +122,12 @@ defmodule Formex.Builder do
 
         to_remove = Form.get_items_with_changed_name(form)
 
-        new_params =
-          params
-          |> Map.merge(new_params)
-          |> Enum.filter(fn {key, value} ->
-            String.to_atom(key) not in to_remove
-          end)
-          |> Map.new()
+        params
+        |> Map.merge(new_params)
+        |> Enum.filter(fn {key, _value} ->
+          String.to_atom(key) not in to_remove
+        end)
+        |> Map.new()
       end)
 
     Map.put(form, :mapped_params, new_params)

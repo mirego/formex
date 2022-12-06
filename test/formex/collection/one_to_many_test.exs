@@ -148,7 +148,8 @@ defmodule Formex.Collection.OneToManyTest do
 
     collections = Formex.Form.find(form, :user_addresses).forms
 
-    Enum.zip(range, collections)
+    range
+    |> Enum.zip(collections)
     |> Enum.map(fn {id, item} ->
       id_str = to_string(id)
       param_val = Map.get(item.form.params, "formex_id")

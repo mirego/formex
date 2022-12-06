@@ -367,14 +367,13 @@ defmodule Formex.View.Collection do
         name
         |> (&Regex.split(~r/_[0-9]+_|\[[0-9]+\]/, &1, include_captures: true)).()
         |> Enum.with_index()
-        |> Enum.map(fn {val, index} ->
+        |> Enum.map_join(fn {val, index} ->
           if rem(index, 2) == 0 do
             val
           else
             Regex.replace(~r/[0-9]+/, val, "__idx" <> to_string(div(index + 1, 2) - 1) <> "__")
           end
         end)
-        |> Enum.join()
 
       a <> b <> replaced_name <> c
     end)

@@ -328,7 +328,7 @@ defmodule Formex.View do
   def formex_label(form, item_name, options \\ []) do
     item = get_item(form, item_name)
     template = get_template(form, options)
-    class = (options[:class] && options[:class]) || ""
+    class = options[:class] || ""
 
     template.generate_label(form, item, class)
   end

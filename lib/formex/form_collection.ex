@@ -103,7 +103,7 @@ defmodule Formex.FormCollection do
       {_, subparams} =
         params
         |> Enum.filter(fn {_key, val} -> val["id"] end)
-        |> Enum.find({nil, %{}}, fn {k, v} ->
+        |> Enum.find({nil, %{}}, fn {_k, v} ->
           id =
             if is_integer(substruct.id) do
               v["id"] |> Integer.parse() |> elem(0)
