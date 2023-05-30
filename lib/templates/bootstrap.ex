@@ -26,6 +26,14 @@ defmodule Formex.Template.Bootstrap do
 
         args =
           args ++
+            if Enum.member?([:radio_button], type) do
+              [data[:radio_value]]
+            else
+              []
+            end
+
+        args =
+          args ++
             if Enum.member?([:checkbox, :file_input], type) do
               [phoenix_opts]
             else

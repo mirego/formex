@@ -4,6 +4,7 @@ defmodule Formex.FieldTestType do
   def build_form(form) do
     form
     |> add(:title, :text_input, custom_value: fn val -> "custom_" <> val end)
+    |> add(:radio, :radio_button, radio_value: "true")
     |> add(:save, :submit)
   end
 end
