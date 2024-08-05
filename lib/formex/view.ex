@@ -1,5 +1,5 @@
 defmodule Formex.View do
-  use Phoenix.HTML
+  use PhoenixHTMLHelpers
   alias Formex.Form
   alias Formex.Field
   alias Formex.FormCollection
@@ -118,7 +118,7 @@ defmodule Formex.View do
 
     fake_conn = %Plug.Conn{params: fake_params, method: "POST"}
 
-    Phoenix.HTML.Form.form_for(fake_conn, action, phoenix_options, fn phx_form ->
+    PhoenixHTMLHelpers.Form.form_for(fake_conn, action, phoenix_options, fn phx_form ->
       form
       |> Map.put(:phoenix_form, phx_form)
       |> Map.put(:template, options[:template])

@@ -1,5 +1,5 @@
 defmodule Formex.View.Collection do
-  use Phoenix.HTML
+  use PhoenixHTMLHelpers
   import Formex.View
   alias __MODULE__
   alias Formex.Form
@@ -204,7 +204,7 @@ defmodule Formex.View.Collection do
 
     html =
       form.phoenix_form
-      |> Phoenix.HTML.Form.inputs_for(item.name, [default: []], fn phoenix_form ->
+      |> PhoenixHTMLHelpers.Form.inputs_for(item.name, [default: []], fn phoenix_form ->
         fake_struct = %{
           id: phoenix_form.params["id"],
           formex_id: phoenix_form.params["formex_id"]
@@ -233,10 +233,10 @@ defmodule Formex.View.Collection do
               end
 
             if subform.struct.id do
-              id_field = Phoenix.HTML.Form.hidden_input(phoenix_form, :id)
+              id_field = PhoenixHTMLHelpers.Form.hidden_input(phoenix_form, :id)
 
               delete_field =
-                Phoenix.HTML.Form.hidden_input(
+                PhoenixHTMLHelpers.Form.hidden_input(
                   phoenix_form,
                   item.delete_field,
                   "data-formex-remove": ""
@@ -257,7 +257,7 @@ defmodule Formex.View.Collection do
               )
             else
               formex_id_field =
-                Phoenix.HTML.Form.hidden_input(
+                PhoenixHTMLHelpers.Form.hidden_input(
                   phoenix_form,
                   :formex_id,
                   data: [

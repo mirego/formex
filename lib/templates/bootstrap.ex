@@ -58,7 +58,7 @@ defmodule Formex.Template.Bootstrap do
       @spec generate_label(form :: Form.t(), field :: Field.t(), class :: String.t()) ::
               Phoenix.HTML.safe()
       def generate_label(form, field, class \\ "") do
-        Phoenix.HTML.Form.label(
+        PhoenixHTMLHelpers.Form.label(
           form.phoenix_form,
           field.name,
           field.label,
