@@ -27,9 +27,10 @@ defmodule Formex.Mixfile do
 
   defp deps do
     [
-      {:phoenix_html, "~> 3.0"},
+      {:phoenix_html, "~> 4.1"},
+      {:phoenix_html_helpers, "~> 1.0"},
       {:ex_doc, ">= 0.0.0", only: :dev},
-      {:phoenix, "~> 1.6", only: [:dev, :test]},
+      {:phoenix, "~> 1.7", only: [:dev, :test]},
       {:credo, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
   end
