@@ -18,6 +18,6 @@ defmodule Formex.Utils do
   end
 
   def implements?(module, behaviour) do
-    Enum.member?(module.module_info[:attributes][:behaviour], behaviour)
+    Enum.member?(module.module_info()[:attributes][:behaviour], behaviour)
   end
 end

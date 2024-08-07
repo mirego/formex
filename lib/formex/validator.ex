@@ -113,7 +113,7 @@ defmodule Formex.Validator do
   @doc false
   def translate_errors(form) do
     translate_error =
-      form.type.translate_error || Application.get_env(:formex, :translate_error) ||
+      form.type.translate_error() || Application.get_env(:formex, :translate_error) ||
         fn {msg, _opts} -> msg end
 
     errors =
@@ -129,7 +129,7 @@ defmodule Formex.Validator do
 
   @spec get_validator(form :: Form.t()) :: any
   defp get_validator(form) do
-    form.type.validator || Application.get_env(:formex, :validator)
+    form.type.validator() || Application.get_env(:formex, :validator)
   end
 
   @spec valid?(Form.t()) :: boolean

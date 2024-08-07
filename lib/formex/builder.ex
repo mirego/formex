@@ -29,7 +29,7 @@ defmodule Formex.Builder do
 
     wrapper =
       if struct_module.module_info(:exports)[:formex_wrapper] do
-        struct_module.formex_wrapper
+        struct_module.formex_wrapper()
       else
         Formex.BuilderType.Struct
       end
