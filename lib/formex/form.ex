@@ -74,14 +74,14 @@ defmodule Formex.Form do
   @spec get_fields_controllable(form :: t) :: list
   def get_fields_controllable(form) do
     form.items
-    |> Enum.filter(&is_controllable/1)
+    |> Enum.filter(&controllable?/1)
   end
 
   @doc """
   Is controllable (all except the `Button`)
   """
-  @spec is_controllable(item :: any) :: boolean
-  def is_controllable(item) do
+  @spec controllable?(item :: any) :: boolean
+  def controllable?(item) do
     item.__struct__ != Button
   end
 
@@ -207,7 +207,7 @@ defmodule Formex.Form do
   @doc false
   @spec get_assoc_or_embed(form :: Form.t(), name :: Atom.t()) :: any
   def get_assoc_or_embed(form, name) do
-    if is_assoc(form, name) do
+    if assoc?(form, name) do
       form.struct_module.__schema__(:association, name)
     else
       form.struct_module.__schema__(:embed, name)
@@ -215,8 +215,8 @@ defmodule Formex.Form do
   end
 
   @doc false
-  @spec is_assoc(form :: Form.t(), name :: Atom.t()) :: boolean
-  def is_assoc(form, name) do
+  @spec assoc?(form :: Form.t(), name :: Atom.t()) :: boolean
+  def assoc?(form, name) do
     form.struct_module.__schema__(:association, name) != nil
   end
 

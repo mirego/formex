@@ -1,3 +1,4 @@
+# credo:disable-for-this-file
 defprotocol Formex.BuilderProtocol do
   @spec create_struct_info(Map.t()) :: Map.t()
   def create_struct_info(args)
