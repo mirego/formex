@@ -1,3 +1,4 @@
+# credo:disable-for-this-file
 defmodule Formex.Field.Select do
   @moduledoc false
 
