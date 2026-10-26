@@ -81,6 +81,7 @@ defmodule Formex.Form do
   Is controllable (all except the `Button`)
   """
   @spec is_controllable(item :: any) :: boolean
+  # credo:disable-for-next-line Credo.Check.Readability.PredicateFunctionNames
   def is_controllable(item) do
     item.__struct__ != Button
   end
@@ -216,6 +217,7 @@ defmodule Formex.Form do
 
   @doc false
   @spec is_assoc(form :: Form.t(), name :: Atom.t()) :: boolean
+  # credo:disable-for-next-line Credo.Check.Readability.PredicateFunctionNames
   def is_assoc(form, name) do
     form.struct_module.__schema__(:association, name) != nil
   end
