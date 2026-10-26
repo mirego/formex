@@ -129,7 +129,7 @@ defmodule Formex.Template do
   """
   @spec has_error(Form.t(), Field.t()) :: any
   def has_error(form, field) do
-    Enum.count(get_errors(form, field)) > 0
+    not Enum.empty?(get_errors(form, field))
   end
 
   @doc """

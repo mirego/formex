@@ -136,9 +136,9 @@ defmodule Formex.Validator do
   defp valid?(form) do
     valid? =
       Enum.reduce_while(form.errors, true, fn {_k, v}, _acc ->
-        if Enum.count(v) > 0,
-          do: {:halt, false},
-          else: {:cont, true}
+        if Enum.empty?(v),
+          do: {:cont, true},
+          else: {:halt, false}
       end)
 
     valid? && nested_valid?(form) && collections_valid?(form)
